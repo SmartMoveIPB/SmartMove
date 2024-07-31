@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->unsignedBigInteger('route_vehicle_id');
+            $table->foreign('route_vehicle_id')->references('id')->on('route_vehicles');
+            $table->date('arrival');
+            $table->date('departure');
             $table->timestamps();
         });
     }

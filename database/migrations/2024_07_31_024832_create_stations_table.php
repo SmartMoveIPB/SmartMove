@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('stations', function (Blueprint $table) {
             $table->id();
-            $table->string('vehicle_code')->unique();
-            $table->String('type' , ['bus','commuter','angkot']);
-            $table->integer('capacity');
-            $table->enum('condition',["diperbaiki" , "beroperasi" ]);
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('stations');
     }
 };

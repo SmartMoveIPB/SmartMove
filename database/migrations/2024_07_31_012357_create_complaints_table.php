@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
+            $table->string('complaint_type');
+            $table->enum('status' , ['pending','in progress','done']);
+            $table->text('description');
             $table->timestamps();
         });
     }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('route_vehicles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('vehicle_id');
+            $table->foreign('vehicle_id')->references('id')->on('vehicles');
             $table->timestamps();
         });
     }
